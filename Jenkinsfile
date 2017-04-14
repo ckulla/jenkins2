@@ -7,9 +7,18 @@ pipeline {
         sh 'echo "Hello World"'
       }
     }
-    stage('java-test') {
+    stage('java-test1') {
       steps {
-        sh 'echo "test1"'
+        parallel(
+          "java-test1": {
+            sh 'echo "test1"'
+            
+          },
+          "java-test2": {
+            sh 'echo "test2"'
+            
+          }
+        )
       }
     }
   }
