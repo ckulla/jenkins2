@@ -7,8 +7,7 @@ pipeline {
         sh 'echo "Hello World"'
       }
     }
-    stage('java-test') {
-      parallel(
+    parallel('java-test') {
         "java-test1": {
           agent any
           steps {
@@ -23,7 +22,6 @@ pipeline {
               sh 'echo "test2"'
             }
           }
-       )
     }
   }
   triggers {
