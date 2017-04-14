@@ -8,6 +8,7 @@ pipeline {
       }
     }
     stage('java-test1') {
+      agent any
       steps {
         parallel(
           "java-test1": {
