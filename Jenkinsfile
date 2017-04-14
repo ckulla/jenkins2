@@ -1,6 +1,6 @@
 pipeline {
-  //git poll: true, intervall: '* * * * *', url: 'git@github.com:ckulla/jenkins2.git'
   agent none
+  triggers { pollSCM('* * * * *') }
   stages {
     stage('uberjar') {
       agent any
@@ -10,8 +10,8 @@ pipeline {
     }
 
     stage('java-test') {
-      parallel 
-          test1: {
+      parallel(
+        test1: {
               node('any') {
                   checkout scm
                   sh 'echo test1'
@@ -22,7 +22,7 @@ pipeline {
                   checkout scm
                   sh 'echo test2'
               }
-          }
+          })
        }
     }
 }
