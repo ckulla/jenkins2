@@ -32,7 +32,7 @@ pipeline {
           },
           "gcc54-amd64-debug": {
             sh 'cat Jenkinsfile'
-          },
+          }
         )
       }
     }
