@@ -9,7 +9,7 @@ pipeline {
     }
     stage('build') {
       parallel(
-        stage('java-test') {
+        'java-test': {
            agent any
            steps {
             parallel(
@@ -25,7 +25,7 @@ pipeline {
             )
           }
         },
-        stage('c++-build') {
+        'c++-build': {
            agent any
            steps {
             parallel(
