@@ -1,6 +1,5 @@
 pipeline {
   agent none
-  triggers { pollSCM('* * * * *') }
   stages {
     stage('uberjar') {
       agent any
@@ -8,5 +7,13 @@ pipeline {
         sh 'echo "Hello World"'
       }
     }
+    stage('java-test') {
+      steps {
+        sh 'echo "test1"'
+      }
+    }
+  }
+  triggers {
+    pollSCM('* * * * *')
   }
 }
