@@ -7,33 +7,35 @@ pipeline {
         sh 'echo "Hello World"'
       }
     }
-    stage('java-test') {
-       agent any
-       steps {
-        parallel(
-          "java-test1": {
-            sh 'cat Jenkinsfile'
-            sh 'echo "test1"'
-            
-          },
-          "java-test2": {
-            sh 'echo "test2"'
-            
-          }
-        )
+    parallel(
+      stage('java-test') {
+         agent any
+         steps {
+          parallel(
+            "java-test1": {
+              sh 'cat Jenkinsfile'
+              sh 'echo "test1"'
+              
+            },
+            "java-test2": {
+              sh 'echo "test2"'
+              
+            }
+          )
+        }
       }
-    }
-    stage('c++-build') {
-       agent any
-       steps {
-        parallel(
-          "gcc54-amd64-debug": {
-            sh 'cat Jenkinsfile'            
-          },
-          "gcc54-amd64-release": {
-            sh 'cat Jenkinsfile'
-          }
-        )
+      stage('c++-build') {
+         agent any
+         steps {
+          parallel(
+            "gcc54-amd64-debug": {
+              sh 'cat Jenkinsfile'            
+            },
+            "gcc54-amd64-release": {
+              sh 'cat Jenkinsfile'
+            }
+          )
+        }
       }
     }
     stage('regression test') {
