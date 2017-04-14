@@ -23,7 +23,7 @@ pipeline {
             }
           )
         }
-      }
+      },
       stage('c++-build') {
          agent any
          steps {
