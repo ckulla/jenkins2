@@ -12,12 +12,15 @@ pipeline {
       steps {
         parallel(
           "java-test1": {
+            checkout scm
+            sh 'cat Jenkinsfile'
             sh 'echo "test1"'
             
           },
           "java-test2": {
+            checkout scm
+            sh 'cat Jenkinsfile'
             sh 'echo "test2"'
-            
           }
         )
       }
