@@ -12,7 +12,7 @@ pipeline {
        steps {
         parallel(
           "java-test1": {
-            ah 'cat Jenkinsfile'
+            sh 'cat Jenkinsfile'
             sh 'echo "test1"'
             
           },
