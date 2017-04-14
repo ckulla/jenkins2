@@ -20,6 +20,7 @@ pipeline {
             
           }
         )
+      }
     }
     stage('regression test') {
       agent any
