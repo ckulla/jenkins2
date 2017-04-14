@@ -7,23 +7,23 @@ pipeline {
         sh 'echo "Hello World"'
       }
     }
-    stage('java-test1') {
-      agent any
-      steps {
-        parallel(
-          "java-test1": {
-            checkout scm
-            sh 'cat Jenkinsfile'
-            sh 'echo "test1"'
-            
+    stage('java-test') {
+      parallel(
+        "java-test1": {
+          agent any
+          steps {
+              sh 'cat Jenkinsfile'
+              sh 'echo "test1"'              
+            }
           },
-          "java-test2": {
-            checkout scm
-            sh 'cat Jenkinsfile'
-            sh 'echo "test2"'
+        "java-test2": {
+          agent any
+          steps {
+              sh 'cat Jenkinsfile'
+              sh 'echo "test2"'
+            }
           }
-        )
-      }
+       )
     }
   }
   triggers {
