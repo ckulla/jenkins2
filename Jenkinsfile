@@ -1,4 +1,5 @@
 pipeline {
+  git poll: true, intervall: "* * * * * ", url: 'git@github.com:ckulla/jenkins2.git'
   agent any
   stages {
     stage('uberjar') {
@@ -10,19 +11,19 @@ pipeline {
       steps {
         parallel(
           "java-test1": {
-            sh 'cat Jenkinsfile'
+            sh 'echo test1'
             
           },
           "java-test2": {
             sh 'echo "test2"'
             
+          },
+          "ide": {
+            sh 'echo "ide"'
+            
           }
+
         )
-      }
-    }
-    stage('java-test2') {
-      steps {
-        sh 'cat Jenkinsfile'
       }
     }
   }
