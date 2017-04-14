@@ -1,12 +1,17 @@
 pipeline {
   agent any
   stages {
-    stage('build') {
+    stage('uberjar') {
       steps {
         sh 'echo "Hello World"'
       }
     }
-    stage('test') {
+    stage('java-test1') {
+      steps {
+        sh 'cat Jenkinsfile'
+      }
+    }
+    stage('java-test2') {
       steps {
         sh 'cat Jenkinsfile'
       }
