@@ -30,7 +30,7 @@ pipeline {
           "gcc54-amd64-debug": {
             sh 'cat Jenkinsfile'            
           },
-          "gcc54-amd64-debug": {
+          "gcc54-amd64-release": {
             sh 'cat Jenkinsfile'
           }
         )
