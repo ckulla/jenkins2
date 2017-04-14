@@ -8,7 +8,16 @@ pipeline {
     }
     stage('java-test1') {
       steps {
-        sh 'cat Jenkinsfile'
+        parallel(
+          "java-test1": {
+            sh 'cat Jenkinsfile'
+            
+          },
+          "java-test2": {
+            sh 'echo "test2"'
+            
+          }
+        )
       }
     }
     stage('java-test2') {
