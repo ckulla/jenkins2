@@ -7,7 +7,7 @@ pipeline {
         sh 'echo "Hello World"'
       }
     }
-    stage('build') {
+    stage('java-test') {
        agent any
        steps {
         parallel(
@@ -20,6 +20,19 @@ pipeline {
             sh 'echo "test2"'
             
           }
+        )
+      }
+    }
+    stage('c++-build') {
+       agent any
+       steps {
+        parallel(
+          "gcc54-amd64-debug": {
+            sh 'cat Jenkinsfile'            
+          },
+          "gcc54-amd64-debug": {
+            sh 'cat Jenkinsfile'
+          },
         )
       }
     }
