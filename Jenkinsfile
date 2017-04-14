@@ -7,21 +7,31 @@ pipeline {
         sh 'echo "Hello World"'
       }
     }
-    parallel('java-test') {
-        "java-test1": {
-          agent any
-          steps {
-              sh 'cat Jenkinsfile'
-              sh 'echo "test1"'              
-            }
+    stage('build') {
+       agent any
+       steps {
+        parallel(
+          "java-test1": {
+            sh 'echo "test1"'
+            
           },
-        "java-test2": {
-          agent any
-          steps {
-              sh 'cat Jenkinsfile'
-              sh 'echo "test2"'
-            }
+          "java-test2": {
+            sh 'echo "test2"'
+            
           }
+        )
+    }
+    stage('regression test') {
+      agent any
+      steps {
+        sh 'echo "Hello World"'
+      }
+    }
+    stage('promote') {
+      agent any
+      steps {
+        sh 'echo "Hello World"'
+      }
     }
   }
   triggers {
